@@ -1,9 +1,27 @@
+import AnimatedCounter from "../components/AnimatedCounter"
 import Button from "../components/Button"
 import HeroExperience from "../components/HeroModels/HeroExperience"
 import { words } from "../constants"
-
+import { useGSAP } from "@gsap/react"
+import gsap from "gsap"
 const Hero = () => {
-  return (
+
+    useGSAP(()=>{
+        gsap.fromTo('.hero-text h1',
+            {
+                y:50,
+                opacity:0,
+            },
+            {
+                y:0,
+                opacity:1,
+                stagger:0.2,
+                duration:1,
+                ease:'power2.inOut'
+            }
+        )
+    })
+    return (
     <section id='hero' className='relative overflow'>
             <div className='absolute top-0 left-0 z-10'>
                 <img
@@ -37,6 +55,10 @@ const Hero = () => {
 
                                     </span>
                                 </h1>
+                                <h1>into Real Projects</h1>
+                                <h1>that Deliver Results</h1>
+                                
+                                
                             </div>
                             <p className="text-white-50 md:text-xl relative z-10 pointer-events-none"> 
                                     Hi, I am Tapiwa , a developer with a passion for solving problems
@@ -57,6 +79,9 @@ const Hero = () => {
                         </figure>                              
                 </header>
             </div>
+
+            {/* Animated Counter */}
+            <AnimatedCounter/>
     </section>
   )
 }
